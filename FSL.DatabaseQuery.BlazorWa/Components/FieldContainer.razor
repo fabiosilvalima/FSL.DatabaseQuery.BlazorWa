@@ -1,0 +1,10 @@
+﻿@inherits FieldContainerComponent
+
+<div class="col-md-@Cols mb-@Cols">
+    <label class="badge badge-pill badge-dark">@Title</label>
+    <div class="input-group">
+        <CascadingValue Value=this>
+            @ChildContent
+        </CascadingValue>
+    </div>
+</div>

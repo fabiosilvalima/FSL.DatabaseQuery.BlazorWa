@@ -1,0 +1,43 @@
+﻿@inherits PagingComponent
+
+@{
+    var pages = Count > 0 ? Convert.ToInt32(Math.Ceiling(Convert.ToDecimal(TotalRecords) / Convert.ToDecimal(Rows))) : 0;
+    var firstPage = Page > 1;
+    var nextPage = Page < pages;
+    var previousPage = firstPage;
+    var lastPage = nextPage;
+}
+
+<nav class="pt-4">
+    <div>
+        <strong>Current Page:</strong>
+        <span class="badge badge-secondary">@(Page)</span>
+        |
+        <strong>Pages: </strong>
+        <span class="badge badge-secondary">@(pages)</span>
+        |
+        <strong>Records:</strong>
+        <span class="badge badge-secondary">@(TotalRecords)</span>
+    </div>
+    <ul class="pagination justify-content-end" style="margin-top:-30px">
+        <PageItem Title="First"
+                  IsTrue="firstPage"
+                  RequestedPage="1"
+                  OnClickAsync="OnClickAsync"></PageItem>
+
+        <PageItem Title="Previous"
+                  IsTrue="previousPage"
+                  RequestedPage="Page - 1"
+                  OnClickAsync="OnClickAsync"></PageItem>
+
+        <PageItem Title="Next"
+                  IsTrue="nextPage"
+                  RequestedPage="Page + 1"
+                  OnClickAsync="OnClickAsync"></PageItem>
+
+        <PageItem Title="Last"
+                  IsTrue="lastPage"
+                  RequestedPage="pages"
+                  OnClickAsync="OnClickAsync"></PageItem>
+    </ul>
+</nav>

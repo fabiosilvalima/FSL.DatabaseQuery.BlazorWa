@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29505.145
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FSL.DatabaseQuery.BlazorWa", "FSL.DatabaseQuery.BlazorWa\FSL.DatabaseQuery.BlazorWa.csproj", "{60BB5D2F-1C7F-477C-99E7-18ADDC5618CC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FSL.Framework.Core", "FSL.Framework.Core\FSL.Framework.Core.csproj", "{83662605-AAE0-43BC-B0CB-E5FFFE6BD556}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FSL.Framework.Web", "FSL.Framework.Web\FSL.Framework.Web.csproj", "{AE5FDB5D-39CB-4D3A-B13D-2005DB7C7AE6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FSL.Framework.Api", "FSL.Framework.Api\FSL.Framework.Api.csproj", "{50953A07-7B95-4602-8287-7B4D7A13261E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FSL.DatabaseQuery.Api", "FSL.DatabaseQuery.Api\FSL.DatabaseQuery.Api.csproj", "{A32C7A47-020E-4E4D-A894-C67678733649}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FSL.DatabaseQuery.Core", "FSL.DatabaseQuery.Core\FSL.DatabaseQuery.Core.csproj", "{7089D7D0-DE68-42DC-9A1D-61D28D0D3D62}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{60BB5D2F-1C7F-477C-99E7-18ADDC5618CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60BB5D2F-1C7F-477C-99E7-18ADDC5618CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60BB5D2F-1C7F-477C-99E7-18ADDC5618CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60BB5D2F-1C7F-477C-99E7-18ADDC5618CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83662605-AAE0-43BC-B0CB-E5FFFE6BD556}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83662605-AAE0-43BC-B0CB-E5FFFE6BD556}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83662605-AAE0-43BC-B0CB-E5FFFE6BD556}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83662605-AAE0-43BC-B0CB-E5FFFE6BD556}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE5FDB5D-39CB-4D3A-B13D-2005DB7C7AE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE5FDB5D-39CB-4D3A-B13D-2005DB7C7AE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE5FDB5D-39CB-4D3A-B13D-2005DB7C7AE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE5FDB5D-39CB-4D3A-B13D-2005DB7C7AE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50953A07-7B95-4602-8287-7B4D7A13261E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50953A07-7B95-4602-8287-7B4D7A13261E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50953A07-7B95-4602-8287-7B4D7A13261E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A32C7A47-020E-4E4D-A894-C67678733649}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A32C7A47-020E-4E4D-A894-C67678733649}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A32C7A47-020E-4E4D-A894-C67678733649}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A32C7A47-020E-4E4D-A894-C67678733649}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7089D7D0-DE68-42DC-9A1D-61D28D0D3D62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7089D7D0-DE68-42DC-9A1D-61D28D0D3D62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7089D7D0-DE68-42DC-9A1D-61D28D0D3D62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7089D7D0-DE68-42DC-9A1D-61D28D0D3D62}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7FC7788F-D7DA-4410-BA62-B28ADE9310A4}
+	EndGlobalSection
+EndGlobal

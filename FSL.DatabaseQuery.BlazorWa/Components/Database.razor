@@ -1,0 +1,161 @@
+﻿@using FSL.DatabaseQuery.Core.Models
+@using FSL.Framework.Core.Extensions
+@inherits DatabaseComponent
+
+@{
+    var rowNum = "row_num";
+}
+
+<div class="form-row pb-3 mt-2">
+    <FieldContainer Cols="2" Title="Data Source">
+        <TextBox Id="tbxDataSource"
+                 @bind-Text="@Request.DataSource"
+                 TextValueChanged="ConectionChangedAsync"></TextBox>
+    </FieldContainer>
+    <FieldContainer Cols="2" Title="Initial Catalog">
+        <TextBox Id="tbxInitialCatalog"
+                 @bind-Text="@Request.DatabaseName"
+                 TextValueChanged="ConectionChangedAsync"></TextBox>
+    </FieldContainer>
+    <FieldContainer Cols="2" Title="User">
+        <TextBox Id="tbxUser"
+                 @bind-Text="@Request.User"
+                 TextValueChanged="ConectionChangedAsync"></TextBox>
+    </FieldContainer>
+    <FieldContainer Cols="2" Title="Password">
+        <TextBox Id="tbxPassword"
+                 @bind-Text="@Request.Password"
+                 TextMode="TextBoxMode.Password"
+                 TextValueChanged="ConectionChangedAsync"></TextBox>
+    </FieldContainer>
+    <FieldContainer Cols="3" Title="Table Name">
+        <DropDownList Id="ddlTables"
+                      DataSource="@Tables"
+                      SelectedValue="@Request.TableName"
+                      SelectedValueChanged="@OnTableChangedAsync" />
+    </FieldContainer>
+    <FieldContainer Cols="1" Title="Per Page">
+        <TextBox Id="tbxPerPage"
+                 @bind-Text="@Request.PerPage"
+                 TextMode="TextBoxMode.Number"
+                 TextValueChanged="ValueChangedAsync"></TextBox>
+    </FieldContainer>
+</div>
+
+@if (Response != null
+  && Response.Data != null
+  && Request.Rows > 0)
+{
+    if (!Response.Success)
+    {
+        <div class="alert alert-danger" role="alert">
+            @Response.Message
+        </div>
+    }
+
+    var count = Response.Data.Count;
+
+    <div class="mt-2" style="overflow-x:auto !important;overflow-y:hidden;">
+        <table class="table table-bordered table-sm">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    @foreach (var column in Columns)
+                    {
+                        var isOrderBy = column.IsOrderBy;
+                        var isColumn = column.Name == Request.OrderBy;
+                        <th scope="col" class="@(isColumn? "table-info" : "")">
+                            @if (isOrderBy)
+                            {
+                                <text>
+                                    @(column.Name)&nbsp;(<a href="#" @onclick="async a => await OnOrderChangedAsync(column.Name, OrderTypes.Asc)">@(isColumn && Request.OrderType == OrderTypes.Asc ? "ASC" : "asc")</a>&nbsp;|&nbsp;<a href="#" @onclick="async a => await OnOrderChangedAsync(column.Name, OrderTypes.Desc)">@(isColumn && Request.OrderType == OrderTypes.Desc ? "DESC" : "desc")</a>)
+                                </text>
+                            }
+                            else
+                            {
+                                @column.Name
+                            }
+                        </th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row"></th>
+                    @foreach (var column in Columns)
+                    {
+                        var isColumn = column.Name == Request.OrderBy;
+                        <td class="@(isColumn? "table-info" : "")" scope="@(column.Name == rowNum ? "row" : "")">
+                            @if (column.IsFilter)
+                            {
+                                @if (column.IsBool)
+                                {
+                                    <DropDownList Id="@($"ddlFilter{column.Name}")"
+                                                  @bind-SelectedValue="@column.Filter"
+                                                  OnValueChanged="ValueChangedAsync">
+                                        <DropDownListItem Text="" Value="" Selected="true"></DropDownListItem>
+                                        <DropDownListItem Text="False" Value="0"></DropDownListItem>
+                                        <DropDownListItem Text="True" Value="1"></DropDownListItem>
+                                    </DropDownList>
+                                }
+                                else
+                                {
+                                    <TextBox Id="@($"tbxFilter{column.Name}")"
+                                             @bind-Text="@column.Filter"
+                                             TextValueChanged="ValueChangedAsync"></TextBox>
+                                }
+                            }
+                            else
+                            {
+                                <i>no filter</i>
+                            }
+                        </td>
+                    }
+                </tr>
+                @if (count > 0)
+                {
+                    foreach (var row in Response.Data)
+                    {
+                        var index = 0;
+                        <tr>
+                            <th scope="row">@(row[index])</th>
+                            @foreach (var column in Columns)
+                            {
+                                index++;
+                                var isColumn = column.Name == Request.OrderBy;
+                                <td class="@(isColumn? "table-info" : "")">@(row[index])</td>
+                            }
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <th scope="row"></th>
+                        <td colspan="@Columns.Count()"><label>No records have been found</label></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <Paging Count="count"
+            Page="Request.Page"
+            Rows="Request.Rows"
+            TotalRecords="Response.TotalRecords"
+            OnClickAsync="OnPagingAsync" />
+
+    if (HasFilters)
+    {
+        <nav>
+            <div>
+                <strong>Filters:</strong>
+                @foreach (var filter in Filters)
+                {
+                    <span class="badge badge-secondary" style="cursor:pointer" title="Remove @(filter.Name) from filter" @onclick="async a => await ResetFilterAsync(filter.Name)">@(filter.Name)=@(filter.Filter)</span>
+                }
+                &nbsp;<button type="button" class="btn btn-primary btn-sm" @onclick="async a => await ResetFilterAsync()">Reset all filters</button>
+            </div>
+        </nav>
+    }
+}

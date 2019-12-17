@@ -3,3 +3,18 @@
 ################################################################################
 
 /.vs
+/FSL.DatabaseQuery.Api/bin
+/FSL.DatabaseQuery.Api/obj
+*.user
+/FSL.DatabaseQuery.BlazorWa/.vs
+/FSL.DatabaseQuery.BlazorWa/bin/Debug/netstandard2.1
+/FSL.DatabaseQuery.BlazorWa/obj
+/FSL.DatabaseQuery.Core/bin
+/FSL.DatabaseQuery.Core/obj
+/FSL.Framework.Api/bin
+/FSL.Framework.Api/obj
+/FSL.Framework.Core/.vs
+/FSL.Framework.Core/bin
+/FSL.Framework.Core/obj
+/FSL.Framework.Web/bin
+/FSL.Framework.Web/obj

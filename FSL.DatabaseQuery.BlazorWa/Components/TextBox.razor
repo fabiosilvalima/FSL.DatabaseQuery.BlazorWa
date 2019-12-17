@@ -1,0 +1,23 @@
+﻿@inherits TextBoxComponent
+
+@if (TextMode == TextBoxMode.MultiLine)
+{
+    <textarea id="@(Id ?? "tbx1")"
+              class="@AllCssClass"
+              maxlength="@MaxLength"
+              rows="@Rows"
+              disabled="@Disabled"
+              required="@Required"
+              @onchange="OnChangeAsync">@Text</textarea>
+}
+else
+{
+    <input type="@TextMode.ToString().ToLower()"
+           id="@(Id ?? "tbx1")"
+           class="@AllCssClass"
+           value="@Text"
+           maxlength="@MaxLength"
+           disabled="@Disabled"
+           required="@Required"
+           @onchange="OnChangeAsync" />
+}

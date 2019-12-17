@@ -1,0 +1,9 @@
+﻿@inherits PageItemComponent
+
+<li class="page-item @IsDisabled(IsTrue)">
+    <a class="page-link"
+       href="#"
+       tabindex="-1"
+       aria-disabled="true"
+       @onclick="OnPagingAsync">@Title</a>
+</li>

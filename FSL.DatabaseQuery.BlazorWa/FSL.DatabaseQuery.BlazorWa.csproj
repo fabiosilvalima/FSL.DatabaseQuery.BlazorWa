@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <RazorLangVersion>3.0</RazorLangVersion>
+    <StartupObject>FSL.DatabaseQuery.BlazorWa.Program</StartupObject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="Components\Database.razor" />
+    <None Include="Components\DropDownList.razor" />
+    <None Include="Components\DropDownListItem.razor" />
+    <None Include="Components\FieldContainer.razor" />
+    <None Include="Components\PageItem.razor" />
+    <None Include="Components\Paging.razor" />
+    <None Include="Components\TextBox.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Blazor" Version="3.1.0-preview4.19579.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Blazor.Build" Version="3.1.0-preview4.19579.2" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.AspNetCore.Blazor.HttpClient" Version="3.1.0-preview4.19579.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Blazor.DevServer" Version="3.1.0-preview4.19579.2" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FSL.DatabaseQuery.Core\FSL.DatabaseQuery.Core.csproj" />
+    <ProjectReference Include="..\FSL.Framework.Core\FSL.Framework.Core.csproj" />
+  </ItemGroup>
+
+</Project>
